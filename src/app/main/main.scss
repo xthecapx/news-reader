@@ -1,0 +1,27 @@
+.main-view {
+
+  .card-title {
+    flex-direction: row;
+    align-items: center;
+    
+    .circle-image {
+      border-radius: 50%;
+      height: 50px;
+      margin: 10px;
+      width: 50px;
+    }
+    
+    .card-title-text {
+      display: inline-block;
+      width: 80%;
+    }
+  }
+
+  .card-content {
+    flex-direction: row;
+    img {
+      max-width: 100px;
+    }
+  }
+  
+}

@@ -1,32 +1,26 @@
-<div layout="vertical" layout-fill>
+<div class="main-view" layout="vertical" layout-fill>
 
-  <md-content>
+  <md-content class="main-content">
     <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
+      <acme-navbar></acme-navbar>
     </header>
 
-    <section class="jumbotron">
-      <h1>'Allo, 'Allo!</h1>
-      <p class="lead">
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-        Always a pleasure scaffolding your apps.
-      </p>
-      <md-button class="md-raised animated infinite" ng-class="main.classAnimation" ng-click="main.showToastr()">Splendid Toastr</md-button>
-      <p>
-        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-      </p>
-    </section>
-
     <div class="techs" layout-align="center">
-      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <md-card-content>
-          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-          <h3 class="md-title">{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-        </md-card-content>
-        <div class="md-action-buttons">
-          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
+      <md-card class="card-title">
+        <img ng-src="http://placehold.it/150x150" class="circle-image" alt="avatar">
+        <div class="card-title-text">
+            Action buttons
         </div>
+      </md-card>
+      <md-card class="card-content">
+        <img ng-src="http://placehold.it/100x200" alt="news image">
+        <md-card-content>
+          <h2>News title</h2>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
       </md-card>
     </div>
   </md-content>
