@@ -1,7 +1,10 @@
-<md-toolbar layout="row" layout-align="start center">
+<md-toolbar class="navbar" layout="row" layout-align="start center">
 
   <md-button href="https://github.com/Swiip/generator-gulp-angular">
     <md-icon md-font-set="material-icons">menu</md-icon>
   </md-button>
+  <div class="md-toolbar-tools">News Reader</div>
 
 </md-toolbar>
+
+<md-subheader ng-show="vm.title" class="md-primary"><strong>Viendo:</strong> {{vm.title | limitTo:50}} ...</md-subheader>

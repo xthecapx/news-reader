@@ -1,8 +1,19 @@
 .main-view {
 
+  .main-content {
+    background: #CECDCE;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
   .card-title {
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
     
     .circle-image {
       border-radius: 50%;

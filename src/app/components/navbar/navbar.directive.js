@@ -11,7 +11,8 @@
       restrict: 'E',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
-          creationDate: '='
+          creationDate: '=',
+          showTitle: '@'
       },
       controller: NavbarController,
       controllerAs: 'vm',
@@ -21,11 +22,16 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController($scope) {
       var vm = this;
 
       // "vm.creationDate" is available by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+      vm.title = vm.showTitle;
+      $scope.$watch('[vm.showTitle]', function (newValue, oldValue) {
+        if (newValue[0] !== oldValue[0]) {
+              vm.title = vm.showTitle;
+            }
+      }, true);
     }
   }
 

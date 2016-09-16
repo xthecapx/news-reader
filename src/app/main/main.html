@@ -1,28 +1,27 @@
-<div class="main-view" layout="vertical" layout-fill>
-
+<div class="main-view" layout="vertical" layout-fill ng-cloak>
+  <!-- Main content -->
   <md-content class="main-content">
-    <header>
-      <acme-navbar></acme-navbar>
+    <header md-scroll-shrink>
+      <acme-navbar show-title="{{vm.selectedTitle}}"></acme-navbar>
     </header>
 
-    <div class="techs" layout-align="center">
+    <div class="techs" layout-align="center" ng-repeat="item in vm.newsData" ng-click="vm.toggleGroup(item)" ng-class="{active: vm.isGroupShown(item)}">
       <md-card class="card-title">
         <img ng-src="http://placehold.it/150x150" class="circle-image" alt="avatar">
         <div class="card-title-text">
-            Action buttons
+            {{item.title | capitalize}}
         </div>
       </md-card>
-      <md-card class="card-content">
-        <img ng-src="http://placehold.it/100x200" alt="news image">
+      <md-card class="card-content" ng-show="vm.isGroupShown(item)">
+        <img ng-src="{{item.image}}" alt="news image">
         <md-card-content>
-          <h2>News title</h2>
+          <h2>{{item.title}}</h2>
           <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+            {{item.content}}
           </p>
         </md-card-content>
       </md-card>
     </div>
   </md-content>
-
+  <!-- /Main content -->
 </div>
