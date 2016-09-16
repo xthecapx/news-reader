@@ -10,7 +10,7 @@
     var vm = this;
 
     //vm.awesomeThings = [];
-    //vm.classAnimation = '';
+    vm.classAnimation = "";
     vm.creationDate = 1474042576264;
     vm.selectedTitle = "";
     //vm.showToastr = showToastr;
@@ -23,8 +23,7 @@
         vm.newsData = response;
       });
 
-    //activate();
-
+    init();
 
     vm.toggleGroup = function(group) {
       if (vm.isGroupShown(group)) {
@@ -42,24 +41,10 @@
       return vm.shownGroup === group;
     };
 
-    function activate() {
-      getWebDevTec();
+    function init() {
       $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
-
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
+        vm.classAnimation = 'go-up';
+      }, 1000);
     }
   }
 })();

@@ -1,5 +1,4 @@
 .main-view {
-
   .main-content {
     background: #CECDCE;
     -webkit-border-top-left-radius: 10px;
@@ -8,6 +7,18 @@
     -moz-border-radius-topright: 10px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
+    -webkit-transition: all .65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    -moz-transition: all .65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    -o-transition: all .65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    -ms-transition: all .65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    transition: all .65s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+
+    transform: translateY(200%);
+
+    &.go-up {
+      transform: translateY(0);
+    }
   }
 
   .card-title {
