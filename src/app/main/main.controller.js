@@ -25,7 +25,7 @@
       });
 
     vm.toggleGroup = function(group, index) {
-      var $el = $(".card-" + index).next(".card-content");
+      var $el = angular.element(".card-" + index).next(".card-content");
       if (vm.isGroupShown(group)) {
         vm.shownGroup = null;
         vm.selectedTitle = "";
@@ -42,8 +42,8 @@
     };
 
     vm.showNews = function() {
-      angular.forEach($(".card-title"), function(card, key) {
-        $(card).toggleClass("go-right");
+      angular.forEach(angular.element(".card-title"), function(card) {
+        angular.element(card).toggleClass("go-right");
       });
       vm.shownGroup = null;
       vm.selectedTitle = "";

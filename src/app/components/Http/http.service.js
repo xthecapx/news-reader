@@ -1,20 +1,33 @@
-angular.module('newsReader')
-.service('httpService', ['$http', function($http) {
+(function() {
+   'use strict';
 
-  this.getData = function(uri, parameters) {
-    //$http.defaults.headers.common.Authorization = 'Bearer ' + user.getUser().token;
-    return $http({
-      url:  uri,
-      method: "GET",
-      params: parameters
-    });
-  };
+   angular
+     .module('newsReader')
+     .factory('httpService', httpService);
 
-  this.postData = function(uri, parameters) {
-    return $http({
-      url:  uri,
-      method: "POST",
-      params: parameters
-    });
-  };
-}]);
+   /** @ngInject */
+   function httpService($http) {
+     var service = {
+       getData: getData,
+       postData: postData
+     };
+
+     return service;
+
+     function getData(uri, parameters) {
+       return $http({
+         url:  uri,
+         method: "GET",
+         params: parameters
+       });
+     }
+
+     function postData(uri, parameters) {
+       return $http({
+         url:  uri,
+         method: "POST",
+         params: parameters
+       });
+     }
+   }
+ })();

@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function cascadingCss() {
-    var directive = function(scope, element, attrs) {
+    var directive = function(scope) {
       if (scope.$last){
 
         var setCss = {
@@ -26,7 +26,7 @@
             });
           },
           "apply": function(el, prop, val) {
-              this.vendors.forEach($.proxy(function(vendor) {
+              this.vendors.forEach(angular.element.proxy(function(vendor) {
                   var p = this.toCamelCase(vendor + prop);
 
                   if(p in el.style) {
@@ -36,7 +36,7 @@
               el.style.transitionTimingFunction = this.timingFunction;
           }
         };
-        angular.forEach($(".card-title"), function(card, key) {
+        angular.forEach(angular.element(".card-title"), function(card) {
           setCss.apply(card, 'transition', 'all ' + setCss.time + 's');
           setCss.time += 0.1;
         });
