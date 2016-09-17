@@ -1,10 +1,19 @@
+<!-- loader -->
+<div class="loading" ng-if="vm.loading">
+  <div class="dialog">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <span> Cargando las mejores noticias!!! ...</span>
+  </div>
+</div>
+<!-- / loader -->
+
 <div class="main-view" layout="vertical" layout-fill ng-cloak>
   <!-- Main content -->
   <md-content class="main-content {{vm.classAnimation}}">
     <!-- header -->
     <header>
       <md-toolbar class="navbar" layout="row" layout-align="start center">
-        <md-button ng-click="vm.showNews()">
+        <md-button ng-click="vm.showNews()" aria-label="show news!">
           <md-icon>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 9H4v2h16V9zM4 15h16v-2H4v2z"/></svg>
           </md-icon>
@@ -16,14 +25,14 @@
     <!-- /header -->
 
     <!-- news -->
-    <div class="news" layout-align="center" ng-repeat="(index, item) in vm.newsData">
-      <md-card class="card-title card-{{index}}" ng-click="vm.toggleGroup(item)">
-        <img ng-src="http://placehold.it/150x150" class="circle-image" alt="avatar">
+    <div class="news" layout-align="center" ng-repeat="(index, item) in vm.newsData" cascading-css>
+      <md-card class="card-title card-{{index}}" ng-click="vm.toggleGroup(item, index)">
+        <div class="circle-image" alt="avatar" ng-class="index%2 ? 'blue' : ''"></div>
         <div class="card-title-text">
             {{item.title | capitalize}}
         </div>
       </md-card>
-      <md-card class="card-content" ng-if="vm.isGroupShown(item)">
+      <md-card class="card-content" ng-show="vm.isGroupShown(item)">
         <img ng-src="{{item.image}}" alt="news image">
         <md-card-content>
           <h2>{{item.title}}</h2>

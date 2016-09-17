@@ -6,34 +6,34 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, $http, webDevTec, toastr, httpService) {
+  function MainController($timeout, $scope, API_ENDPOINT, NEWS_DATA, httpService) {
     var vm = this;
 
-    //vm.awesomeThings = [];
     vm.classAnimation = "";
     vm.creationDate = 1474042576264;
     vm.selectedTitle = "";
-    //vm.showToastr = showToastr;
+    vm.loading = true;
 
     httpService
-      .getData("app/data/news_mock.json", null)
+      .getData(API_ENDPOINT.host + NEWS_DATA.path, null)
       .success(function(response) {
-        //$scope.afinidades = response.data;
-        //$scope.loading = false;
         vm.newsData = response;
+        $timeout(function() { // Emulate delay for fetching data
+          vm.loading = false;
+          vm.classAnimation = 'go-up';
+        }, 2000);
       });
 
-    init();
-
-    vm.toggleGroup = function(group) {
+    vm.toggleGroup = function(group, index) {
+      var $el = $(".card-" + index).next(".card-content");
       if (vm.isGroupShown(group)) {
         vm.shownGroup = null;
         vm.selectedTitle = "";
-        
+        $el.removeClass("go-down");
       } else {
         vm.shownGroup = group;
         vm.selectedTitle = group.title;
-        
+        $el.addClass("go-down");
       }
     };
 
@@ -42,13 +42,11 @@
     };
 
     vm.showNews = function() {
-      debugger;
-    }
-
-    function init() {
-      $timeout(function() {
-        vm.classAnimation = 'go-up';
-      }, 1000);
+      angular.forEach($(".card-title"), function(card, key) {
+        $(card).toggleClass("go-right");
+      });
+      vm.shownGroup = null;
+      vm.selectedTitle = "";
     }
   }
 })();
