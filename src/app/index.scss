@@ -68,20 +68,6 @@ md-content.main-content {
   margin: 3% auto 0;
 }
 
-.techs {
-  display: flex;
-  flex-flow: row wrap;
-
-  md-card {
-    width: 100%;
-
-    img.pull-right {
-      float: right;
-      width: 100px;
-    }
-  }
-}
-
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

@@ -41,6 +41,10 @@
       return vm.shownGroup === group;
     };
 
+    vm.showNews = function() {
+      debugger;
+    }
+
     function init() {
       $timeout(function() {
         vm.classAnimation = 'go-up';
